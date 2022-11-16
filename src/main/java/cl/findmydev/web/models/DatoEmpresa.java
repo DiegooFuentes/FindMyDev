@@ -31,7 +31,7 @@ public class DatoEmpresa {
 	@NotNull
 	private String descripcion;
 
-	 @NotNull	
+		
 	private String foto;
 	 
 	 
