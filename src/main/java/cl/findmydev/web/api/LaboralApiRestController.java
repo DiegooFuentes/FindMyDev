@@ -19,5 +19,20 @@ private LaboralServiceImpl laboralServiceImpl;
 	public Laboral guardarLaboral(@RequestBody Laboral laboral) {
 		return laboralServiceImpl.guardarLaboral(laboral);
 	}
+	//------------------------------------------------------
+	// http;//localhost:8080/actualizar/laboral
+	
+	@RequestMapping("/actualizar/laboral")
+	public String actualizarLaboral(@RequestBody Laboral laboral) {
+		return  laboralServiceImpl.actualizarLaboral(laboral);
+		
+		
+		
+		/* if(laboral.getId()!=null) {
+		String mensaje =  laboralServiceImpl.actualizarLaboral(laboral);
+			return mensaje;
+		}
+		return "No se actualizara ningun laboral"; */
+	}
 
 }
