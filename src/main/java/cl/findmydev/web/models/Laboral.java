@@ -35,6 +35,8 @@ public class Laboral {
 	
 	@NotNull
 	private String descripcion;
+	
+	// --------- MEtodo
 
 	public Laboral() {
 		super();
