@@ -15,4 +15,31 @@ public class ProyectoServiceImpl implements ProyectoService {
 	public Proyecto guardarProyecto(Proyecto proyecto) {
 		return proyectoRepository.save(proyecto);
 }
+
+	@Override
+	public String eliminarProyecto(Long id) {
+		Boolean existe = proyectoRepository.existsById(id);
+		if (existe ) {
+			proyectoRepository.deleteById(id);
+		}else {
+			return "No existe un proyecto con esa id en la tabla  ";
+		}
+		
+         existe=proyectoRepository.existsById(id);
+         if(existe) {
+        	 return "el proyecto no ah sido eliminado";
+         }
+		return "El proyecto ah sido eliminado Exitosamente";
+	}
+
+	@Override
+	public String actualizarProyecto(Proyecto proyecto) {
+		Boolean existe = proyectoRepository.existsById(proyecto.getId());
+		
+		if(existe) {
+			proyectoRepository.save(proyecto);
+			return " Su Proyecto se ah Actualizado Exitosamente";
+		}
+		return "No se ah encontrado el id del proyecto No se puede Actualizar";
+	}
 }

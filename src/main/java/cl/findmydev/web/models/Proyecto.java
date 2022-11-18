@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Proyecto {
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id; 
+    private Long id; 
 	
 	@NotNull
 	@Size(min=3, max=15, message="error en el ingreso del nombre")
@@ -44,7 +44,7 @@ public class Proyecto {
 		super();
 	}
 
-	public Proyecto(long id,
+	public Proyecto(Long id,
 			@NotNull @Size(min = 3, max = 15, message = "error en el ingreso del nombre") String nombre,
 			String descripcion, String foto, String url) {
 		super();
@@ -55,11 +55,11 @@ public class Proyecto {
 		this.url = url;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
