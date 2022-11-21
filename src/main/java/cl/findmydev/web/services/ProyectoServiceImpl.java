@@ -1,5 +1,8 @@
 package cl.findmydev.web.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,7 @@ public class ProyectoServiceImpl implements ProyectoService {
 		return "El proyecto ah sido eliminado Exitosamente";
 	}
 
+	 //aCTUALIZAR
 	@Override
 	public String actualizarProyecto(Proyecto proyecto) {
 		Boolean existe = proyectoRepository.existsById(proyecto.getId());
@@ -41,5 +45,18 @@ public class ProyectoServiceImpl implements ProyectoService {
 			return " Su Proyecto se ah Actualizado Exitosamente";
 		}
 		return "No se ah encontrado el id del proyecto No se puede Actualizar";
+	}
+	
+	//Obtener. 	
+	@Override
+	public Optional <Proyecto> obtenerProyecto(Long id) {
+		Optional <Proyecto> proyect = proyectoRepository.findById(id);
+		return proyect;
+	}
+
+	 //tRAER TODOS LOS PROYECTOS
+	@Override
+	public List<Proyecto> todoProyectos() {
+		return proyectoRepository.findAll();
 	}
 }

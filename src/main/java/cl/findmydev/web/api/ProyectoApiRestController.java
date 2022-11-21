@@ -1,5 +1,8 @@
 package cl.findmydev.web.api;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,5 +39,20 @@ public class ProyectoApiRestController {
 			}
 			return "NO SE PUEDE ACTUALIZAR SI NO ESTA CREADO";
 		}
+	 
+	 // Traer un proyecto 
+	 @RequestMapping("/obtener/proyecto")
+	 public Optional <Proyecto> obtenerProyecto(@RequestParam(value="id",required=true)Long id) {
+		 return proyectoServiceImpl.obtenerProyecto(id);
+	 }
+	 
+	 //Traer todos los proyectps disponibles 
+	 
+	 @RequestMapping("/lista/proyectos")
+	 public List <Proyecto> todoProyecto(){
+		 return proyectoServiceImpl.todoProyectos();
+	 }
+	 
+	 
 	 }
 

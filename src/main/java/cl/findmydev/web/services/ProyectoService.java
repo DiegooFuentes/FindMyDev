@@ -1,5 +1,8 @@
 package cl.findmydev.web.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import cl.findmydev.web.models.Proyecto;
 
 public interface ProyectoService {
@@ -10,4 +13,12 @@ public interface ProyectoService {
 	
 	//Actualizar Proyecto
 	public String actualizarProyecto(Proyecto proyecto);
+	
+	//Para obtener un proyecto 
+	
+	public Optional  <Proyecto> obtenerProyecto(Long id);
+	
+	//Obtener todos los proyectos 
+	
+	public List <Proyecto> todoProyectos();
 }
