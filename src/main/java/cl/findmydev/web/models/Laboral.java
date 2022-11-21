@@ -1,6 +1,7 @@
 package cl.findmydev.web.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,19 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter 
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity 
 @Table(name="laborales")
 public class Laboral {
@@ -35,50 +49,8 @@ public class Laboral {
 	
 	@NotNull
 	private String descripcion;
-
-	public Laboral() {
-		super();
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
-
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
-	public Date getFechaTermino() {
-		return fechaTermino;
-	}
-
-	public void setFechaTermino(Date fechaTermino) {
-		this.fechaTermino = fechaTermino;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+	
+	// --------- MEtodo
 	
 	
 	 @PrePersist
