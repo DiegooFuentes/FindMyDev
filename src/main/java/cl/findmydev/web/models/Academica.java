@@ -1,6 +1,7 @@
 package cl.findmydev.web.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,20 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import cl.generation.web.models.Usuario;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter 
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity // convertir en entidad
 @Table(name="academicas")
 public class Academica {
@@ -30,40 +45,6 @@ public class Academica {
 	@DateTimeFormat (pattern="yyyy-MM-dd")
 	private Date updatedAt;
 	
-	public Academica() {
-		super();
-	}
-
-	public Academica(long id, @NotNull String nombre, String descripcion) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
 	
 	//atributos de control
 		 @PrePersist //agregar a la columna la fecha antes de insertar
