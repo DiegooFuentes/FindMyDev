@@ -19,14 +19,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Habilidad_Tecnica {
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id; 
+    private Long id; 
 	
 	@NotNull
 	private String nombre;
 	
 	private String descripcion;
 	
-	private int valoracion;
 	
 
 	 @Column(updatable=false)
@@ -42,24 +41,23 @@ public class Habilidad_Tecnica {
 		}
 
 
-		public Habilidad_Tecnica(long id, @NotNull String nombre, String descripcion, int valoracion, Date createdAt,
+		public Habilidad_Tecnica(Long id, @NotNull String nombre, String descripcion,  Date createdAt,
 				Date updatedAt) {
 			super();
 			this.id = id;
 			this.nombre = nombre;
 			this.descripcion = descripcion;
-			this.valoracion = valoracion;
 			this.createdAt = createdAt;
 			this.updatedAt = updatedAt;
 		}
 
 
-		public long getId() {
+		public Long getId() {
 			return id;
 		}
 
 
-		public void setId(long id) {
+		public void setId(Long id) {
 			this.id = id;
 		}
 
@@ -83,15 +81,6 @@ public class Habilidad_Tecnica {
 			this.descripcion = descripcion;
 		}
 
-
-		public int getValoracion() {
-			return valoracion;
-		}
-
-
-		public void setValoracion(int valoracion) {
-			this.valoracion = valoracion;
-		}
 
 
 		public Date getCreatedAt() {

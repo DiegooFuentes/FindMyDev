@@ -23,7 +23,7 @@ public class Proyecto {
     private Long id; 
 	
 	@NotNull
-	@Size(min=3, max=15, message="error en el ingreso del nombre")
+	@Size(min=3, max=40, message="error en el ingreso del nombre")
 	private String nombre;
 	
 	private  String descripcion;
