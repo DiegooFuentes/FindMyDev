@@ -6,4 +6,6 @@ public interface DatoEmpresaService {
 
 	public DatoEmpresa guardarDatoEmpresa(DatoEmpresa datoEmpresa);
 
+	public String eliminarDatoEmpresa(Long id);
+
 }
