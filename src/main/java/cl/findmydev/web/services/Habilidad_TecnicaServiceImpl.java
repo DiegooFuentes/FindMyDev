@@ -9,41 +9,39 @@ import org.springframework.stereotype.Service;
 import cl.findmydev.web.models.Habilidad_Tecnica;
 import cl.findmydev.web.repositories.Habilidad_TecnicaRepository;
 
-
-
 @Service
-public class Habilidad_TecnicaServiceImpl implements Habilidad_TecnicaService{
-       
+public class Habilidad_TecnicaServiceImpl implements Habilidad_TecnicaService {
+
 	@Autowired
 	private Habilidad_TecnicaRepository habilidad_tecnicaRepository;
-	
+
 	@Override
 	public Habilidad_Tecnica guardarHabilidad_Tecnica(Habilidad_Tecnica habilidad_tecnica) {
 		return habilidad_tecnicaRepository.save(habilidad_tecnica);
-}
+	}
 
-	//eliminar
+	// eliminar
 	@Override
 	public String eliminarHabilidad_Tecnica(Long id) {
 		Boolean existe = habilidad_tecnicaRepository.existsById(id);
-		if(existe) {
+		if (existe) {
 			habilidad_tecnicaRepository.deleteById(id);
-		}else {
+		} else {
 			return "No se encuentra Registrada esa Habilidad Tecnica";
 		}
-		
+
 		existe = habilidad_tecnicaRepository.existsById(id);
-		if(existe) {
+		if (existe) {
 			return "Hay un error no se puede eliminar esa Habilidad tecnica ";
 		}
-	
+
 		return "Se ah eliminado tu Habilidad Tecica Exitsamente";
 	}
 
 	@Override
 	public String actualizarHabilidad_Tecnica(Habilidad_Tecnica habilidad_tecnica) {
 		Boolean existe = habilidad_tecnicaRepository.existsById(habilidad_tecnica.getId());
-		if(existe) {
+		if (existe) {
 			habilidad_tecnicaRepository.save(habilidad_tecnica);
 			return "Su Habilidad tecnica ah sido actualizada Exitosamente";
 		}
@@ -52,12 +50,12 @@ public class Habilidad_TecnicaServiceImpl implements Habilidad_TecnicaService{
 
 	@Override
 	public Optional<Habilidad_Tecnica> obtenerHabilidad_Tecnica(Long id) {
-        Optional<Habilidad_Tecnica> habilidadTec= habilidad_tecnicaRepository.findById(id);
+		Optional<Habilidad_Tecnica> habilidadTec = habilidad_tecnicaRepository.findById(id);
 		return habilidadTec;
 	}
 
 	@Override
-	
+
 	public List<Habilidad_Tecnica> TodoHabilidadTecnica() {
 		return habilidad_tecnicaRepository.findAll();
 	}
