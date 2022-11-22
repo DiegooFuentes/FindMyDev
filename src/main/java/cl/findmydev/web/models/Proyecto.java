@@ -15,6 +15,21 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
+
+
+
+@Getter
+@Setter 
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name="proyectos")
 public class Proyecto {
@@ -40,60 +55,6 @@ public class Proyecto {
 	    private Date updatedAt;
 	    
 
-	public Proyecto() {
-		super();
-	}
-
-	public Proyecto(Long id,
-			@NotNull @Size(min = 3, max = 15, message = "error en el ingreso del nombre") String nombre,
-			String descripcion, String foto, String url) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.foto = foto;
-		this.url = url;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
 	
 	// agregar a la columna la fecha antes de insertar
 		 @PrePersist
