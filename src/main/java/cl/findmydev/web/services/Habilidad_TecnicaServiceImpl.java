@@ -57,6 +57,7 @@ public class Habilidad_TecnicaServiceImpl implements Habilidad_TecnicaService{
 	}
 
 	@Override
+	
 	public List<Habilidad_Tecnica> TodoHabilidadTecnica() {
 		return habilidad_tecnicaRepository.findAll();
 	}

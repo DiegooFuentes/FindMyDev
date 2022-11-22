@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import cl.findmydev.web.models.DatoEmpresa;
 
 @Repository
-
 public interface DatoEmpresaRepository extends JpaRepository<DatoEmpresa, Long> {
 
 }
