@@ -14,10 +14,19 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "datos_contacto")
+@Getter
+@Setter 
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class DatoContacto {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -38,50 +47,6 @@ public class DatoContacto {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt; 
-
-	public DatoContacto() {
-		super();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getCorreo() {
-		return correo;
-	}
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-
-	public Long getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(Long telefono) {
-		this.telefono = telefono;
-	}
-
-	public String getGithub() {
-		return github;
-	}
-
-	public void setGithub(String github) {
-		this.github = github;
-	}
-
-	public String getPortafolio() {
-		return portafolio;
-	}
-
-	public void setPortafolio(String portafolio) {
-		this.portafolio = portafolio;
-	}
 	
 	@PrePersist 
 	protected void onCreate(){

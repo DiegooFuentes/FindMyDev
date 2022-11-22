@@ -26,9 +26,6 @@ public class AcademicaApiRestController {
 	}
 
 	
-//<<<<<<< HEAD
-
-//=======
 	//http://localhost:8080/eliminar/academica
 	@RequestMapping("/eliminar/academica")
 	public String eliminarAcademica(@RequestParam(value="id",required = false) Long id) {
