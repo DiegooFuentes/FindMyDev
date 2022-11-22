@@ -2,6 +2,8 @@ package cl.findmydev.web.models;
 
 import java.util.Date;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +16,17 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter 
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name="Habilidades_Tecnicas")
 public class Habilidad_Tecnica {
@@ -36,72 +49,8 @@ public class Habilidad_Tecnica {
 	    private Date updatedAt;
 
 	    
-		public Habilidad_Tecnica() {
-			super();
-		}
+		
 
-
-		public Habilidad_Tecnica(Long id, @NotNull String nombre, String descripcion,  Date createdAt,
-				Date updatedAt) {
-			super();
-			this.id = id;
-			this.nombre = nombre;
-			this.descripcion = descripcion;
-			this.createdAt = createdAt;
-			this.updatedAt = updatedAt;
-		}
-
-
-		public Long getId() {
-			return id;
-		}
-
-
-		public void setId(Long id) {
-			this.id = id;
-		}
-
-
-		public String getNombre() {
-			return nombre;
-		}
-
-
-		public void setNombre(String nombre) {
-			this.nombre = nombre;
-		}
-
-
-		public String getDescripcion() {
-			return descripcion;
-		}
-
-
-		public void setDescripcion(String descripcion) {
-			this.descripcion = descripcion;
-		}
-
-
-
-		public Date getCreatedAt() {
-			return createdAt;
-		}
-
-
-		public void setCreatedAt(Date createdAt) {
-			this.createdAt = createdAt;
-		}
-
-
-		public Date getUpdatedAt() {
-			return updatedAt;
-		}
-
-
-		public void setUpdatedAt(Date updatedAt) {
-			this.updatedAt = updatedAt;
-		}
-	    
 		// agregar a la columna la fecha antes de insertar
 				 @PrePersist
 				    protected void onCreate(){
