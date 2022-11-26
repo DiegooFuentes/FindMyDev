@@ -14,33 +14,32 @@ public class DatoContactoApiRestController {
 
 	@Autowired
 	private DatoContactoServiceImpl datoContactoServiceImpl;
-	
-	@RequestMapping ("/guardar/datoContacto")
-	public DatoContacto guardarDatoContacto (@RequestBody DatoContacto datoContacto) {
+
+	@RequestMapping("/guardar/datoContacto")
+	public DatoContacto guardarDatoContacto(@RequestBody DatoContacto datoContacto) {
 		return datoContactoServiceImpl.guardarDatoContacto(datoContacto);
 	}
-	
+
 	@RequestMapping("/eliminar/datoContacto")
-	public String eliminarDatoContacto(@RequestParam(value="id",required = false) Long id) {
-		
+	public String eliminarDatoContacto(@RequestParam(value = "id", required = false) Long id) {
+
 		return datoContactoServiceImpl.eliminarDatoContacto(id);
 	}
-	
 
 	@RequestMapping("/actualizar/datoContacto")
 	public String actualizarDatoContacto(@RequestBody DatoContacto datoContacto) {
-		
-		if (datoContacto.getId()!=null) {
+
+		if (datoContacto.getId() != null) {
 			String mensaje = datoContactoServiceImpl.actualizarDatoContacto(datoContacto);
 			return mensaje;
 		}
 		return "no se actualizara ningun usuario";
 	}
-	
+
 	@RequestMapping("/obtener/datoContacto")
-	public DatoContacto obtenerDatoContacto(@RequestParam(value="id",required = true) Long id) {
-		
+	public DatoContacto obtenerDatoContacto(@RequestParam(value = "id", required = true) Long id) {
+
 		return datoContactoServiceImpl.obtenerDatoContacto(id);
 	}
-	
+
 }
