@@ -45,12 +45,10 @@ public class DatoEmpresaApiRestController {
 
 	}
 
-	
 	@RequestMapping("/obtener/datoEmpresa")
-	public Optional<DatoEmpresa> obtenerEmpresa(@RequestParam(value="id",required=true)Long id){
-		
+	public Optional<DatoEmpresa> obtenerEmpresa(@RequestParam(value = "id", required = true) Long id) {
+
 		return datoEmpresaServiceImpl.obtenerEmpresa(id);
 	}
-	
-	
+
 }

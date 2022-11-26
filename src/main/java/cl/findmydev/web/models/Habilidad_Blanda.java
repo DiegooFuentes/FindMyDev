@@ -20,40 +20,38 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@Setter 
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Entity 
-@Table(name="habilidades_blandas")
+@Entity
+@Table(name = "habilidades_blandas")
 public class Habilidad_Blanda {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@NotNull
 	private String descripcion;
-	
+
 	@NotNull
 	private String valoracion;
-	
-	@DateTimeFormat (pattern="yyyy-MM-dd")
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
-	@DateTimeFormat (pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-	
-	
-	//atributos de control
-		 @PrePersist //agregar a la columna la fecha antes de insertar
-		    protected void onCreate(){
-		        this.createdAt = new Date();
-		    }
-		 @PreUpdate //actualizar el atributo de created
-		    protected void onUpdate(){
-		        this.updatedAt = new Date();
-		    }
-	
-	
+
+	// atributos de control
+	@PrePersist // agregar a la columna la fecha antes de insertar
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
+	@PreUpdate // actualizar el atributo de created
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
 
 }

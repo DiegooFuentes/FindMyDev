@@ -20,70 +20,48 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
-
 @Getter
-@Setter 
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="DatosEmpresas")
+@Table(name = "DatosEmpresas")
 
 public class DatoEmpresa {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	
+
 	@NotNull
 	private String nombre;
-	
+
 	@NotNull
 	private String descripcion;
 
-		
 	private String foto;
-	 
-	 
-		@Column(updatable=false)
-		@DateTimeFormat(pattern="yyyy-MM-dd")
 
-		private Date createdAt;
-		
+	@Column(updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 
-		@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date createdAt;
 
-		private Date updatedAt;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 
+	private Date updatedAt;
 
-		
-		
-		//agregar a la columna la fecha antes de insertar 
-		// date para mantener registro de fechas 
-		 @PrePersist // antes de guardar agrega la fecha 
-		    protected void onCreate(){
-		        this.createdAt = new Date();
-		    }
-		 
-		 // insertar en el atributo update o actualizar ese atributo ....
-		    @PreUpdate
-		    protected void onUpdate(){
-		        this.updatedAt = new Date();
-		    }
+	// agregar a la columna la fecha antes de insertar
+	// date para mantener registro de fechas
+	@PrePersist // antes de guardar agrega la fecha
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
 
+	// insertar en el atributo update o actualizar ese atributo ....
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
 
-
-
-		    
-		    
-		    
-		
-		
-		
-		
-		
-		
-		
 }

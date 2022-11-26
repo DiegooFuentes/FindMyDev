@@ -23,40 +23,39 @@ import lombok.ToString;
 @Entity
 @Table(name = "datos_contacto")
 @Getter
-@Setter 
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class DatoContacto {
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	private String correo;
-	
+
 	private Long telefono;
-	
+
 	private String github;
-	
+
 	private String portafolio;
-	
-	@Column(updatable = false) 
+
+	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date createdAt; 
-	
+	private Date createdAt;
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date updatedAt; 
-	
-	@PrePersist 
-	protected void onCreate(){
-	     this.createdAt = new Date(); 
-	}
-	    
-	@PreUpdate  
-	protected void onUpdate(){
-	     this.updatedAt = new Date();
+	private Date updatedAt;
+
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
 	}
 
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
 
 }
