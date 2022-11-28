@@ -61,8 +61,21 @@ public class Postulante {
 	@JoinColumn(name = "proyecto_id")
 	private Proyecto proyecto;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="academica_id")
+	private Academica academica;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="laboral_id")
+	private Laboral laboral;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="habilidad_blanda_id")
+	private Habilidad_Blanda habilidad_Blanda;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "contacto_id")
 	private DatoContacto datoContacto;
+
 
 }
