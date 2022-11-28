@@ -2,11 +2,14 @@ package cl.findmydev.web.models;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -28,7 +31,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="DatosEmpresas")
+@Table(name="datoEmpresas")
 
 public class DatoEmpresa {
 	
@@ -45,6 +48,8 @@ public class DatoEmpresa {
 
 		
 	private String foto;
+	@OneToOne(mappedBy ="datoEmpresa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Reclutador reclutador;
 	 
 	 
 		@Column(updatable=false)
