@@ -2,11 +2,14 @@ package cl.findmydev.web.models;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -26,7 +29,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "DatosEmpresas")
+@Table(name = "datoEmpresas")
 
 public class DatoEmpresa {
 
@@ -41,27 +44,45 @@ public class DatoEmpresa {
 	private String descripcion;
 
 	private String foto;
+	 
+	 
+		@Column(updatable=false)
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 
-	@Column(updatable = false)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+		private Date createdAt;
+		
 
-	private Date createdAt;
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+		private Date updatedAt;
 
-	private Date updatedAt;
 
-	// agregar a la columna la fecha antes de insertar
-	// date para mantener registro de fechas
-	@PrePersist // antes de guardar agrega la fecha
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
+		
+		
+		//agregar a la columna la fecha antes de insertar 
+		// date para mantener registro de fechas 
+		 @PrePersist // antes de guardar agrega la fecha 
+		    protected void onCreate(){
+		        this.createdAt = new Date();
+		    }
+		 
+		 // insertar en el atributo update o actualizar ese atributo ....
+		    @PreUpdate
+		    protected void onUpdate(){
+		        this.updatedAt = new Date();
+		    }
 
-	// insertar en el atributo update o actualizar ese atributo ....
-	@PreUpdate
-	protected void onUpdate() {
-		this.updatedAt = new Date();
-	}
 
+
+
+		    
+		    
+		    
+		
+		
+		
+		
+		
+		
+		
 }
