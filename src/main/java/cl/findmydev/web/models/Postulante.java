@@ -73,4 +73,6 @@ public class Postulante {
 	@JoinColumn(name="habilidad_blanda_id")
 	private Habilidad_Blanda habilidad_Blanda;
 
+
+
 }
