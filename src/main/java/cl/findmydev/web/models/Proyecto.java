@@ -1,12 +1,16 @@
 package cl.findmydev.web.models;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -21,50 +25,46 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
-
-
-
 @Getter
-@Setter 
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="proyectos")
+@Table(name = "proyectos")
 public class Proyecto {
-	@Id 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id; 
-	
-	@NotNull
-	@Size(min=3, max=40, message="error en el ingreso del nombre")
-	private String nombre;
-	
-	private  String descripcion;
-	
-	private String foto;
-	
-	private String url;
-	
-	 @Column(updatable=false)
-	    @DateTimeFormat(pattern="yyyy-MM-dd")
-	    private Date createdAt;
-	    
-	    @DateTimeFormat(pattern="yyyy-MM-dd")
-	    private Date updatedAt;
-	    
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	
-	// agregar a la columna la fecha antes de insertar
-		 @PrePersist
-		    protected void onCreate(){
-		        this.createdAt = new Date();
-		    }
-		 
-		 
-		    @PreUpdate
-		    protected void onUpdate(){
-		        this.updatedAt = new Date();
-		    }
+	@NotNull
+	@Size(min = 3, max = 50, message = "error en el ingreso del nombre")
+	private String nombre;
+
+	private String descripcion;
+
+	private String foto;
+
+	private String url;
+
+	@Column(updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date createdAt;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date updatedAt;
+
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
+
+	@OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Postulante> postulantes;
+
 }

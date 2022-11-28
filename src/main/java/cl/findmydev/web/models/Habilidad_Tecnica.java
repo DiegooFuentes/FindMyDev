@@ -2,8 +2,6 @@ package cl.findmydev.web.models;
 
 import java.util.Date;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,45 +21,38 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@Setter 
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="Habilidades_Tecnicas")
+@Table(name = "Habilidades_Tecnicas")
 public class Habilidad_Tecnica {
-	@Id 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id; 
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
 	@NotNull
 	private String nombre;
-	
+
 	private String descripcion;
-	
-	
 
-	 @Column(updatable=false)
-	    @DateTimeFormat(pattern="yyyy-MM-dd")
-	    private Date createdAt;
-	    
-	    @DateTimeFormat(pattern="yyyy-MM-dd")
-	    private Date updatedAt;
+	@Column(updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date createdAt;
 
-	    
-		
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date updatedAt;
 
-		// agregar a la columna la fecha antes de insertar
-				 @PrePersist
-				    protected void onCreate(){
-				        this.createdAt = new Date();
-				    }
-				 
-				 
-				    @PreUpdate
-				    protected void onUpdate(){
-				        this.updatedAt = new Date();
-				    }
-	    
-	
+	// agregar a la columna la fecha antes de insertar
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
+
 }

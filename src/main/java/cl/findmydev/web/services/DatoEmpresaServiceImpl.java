@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cl.findmydev.web.models.DatoEmpresa;
-import cl.findmydev.web.models.Habilidad_Tecnica;
 import cl.findmydev.web.repositories.DatoEmpresaRepository;
 
 @Service
@@ -60,9 +59,6 @@ public class DatoEmpresaServiceImpl implements DatoEmpresaService {
 		return "No se ah encontrado el id del proyecto No se puede Actualizar";
 	}
 
-	
-	
-
 	@Override
 	public List<DatoEmpresa> listarDatoEmpresas() {
 		return datoEmpresaRepository.findAll();
@@ -70,8 +66,8 @@ public class DatoEmpresaServiceImpl implements DatoEmpresaService {
 
 	@Override
 	public Optional<DatoEmpresa> obtenerEmpresa(Long id) {
-        Optional<DatoEmpresa> datoEm= datoEmpresaRepository.findById(id);
+		Optional<DatoEmpresa> datoEm = datoEmpresaRepository.findById(id);
 		return datoEm;
 	}
-	
+
 }

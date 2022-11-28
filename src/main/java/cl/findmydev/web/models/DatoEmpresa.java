@@ -23,33 +23,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
-
 @Getter
-@Setter 
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="datoEmpresas")
+@Table(name = "datoEmpresas")
 
 public class DatoEmpresa {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	
+
 	@NotNull
 	private String nombre;
-	
+
 	@NotNull
 	private String descripcion;
 
-		
 	private String foto;
-	@OneToOne(mappedBy ="datoEmpresa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Reclutador reclutador;
 	 
 	 
 		@Column(updatable=false)
@@ -82,7 +76,8 @@ public class DatoEmpresa {
 
 
 		    
-		 
+		    
+		    
 		
 		
 		
