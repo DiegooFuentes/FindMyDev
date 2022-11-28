@@ -72,6 +72,10 @@ public class Postulante {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="habilidad_blanda_id")
 	private Habilidad_Blanda habilidad_Blanda;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "contacto_id")
+	private DatoContacto datoContacto;
 
 
 }
