@@ -60,5 +60,9 @@ public class Postulante {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "proyecto_id")
 	private Proyecto proyecto;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "contacto_id")
+	private DatoContacto datoContacto;
 
 }
