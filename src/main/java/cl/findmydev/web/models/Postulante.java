@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -52,9 +54,9 @@ public class Postulante {
 		this.updatedAt = new Date();
 	}
 
-	// @JsonIgnore
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "usuario_id") // se crea foreign key
+	//@JsonIgnore
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "usuarioId") // se crea foreign key
 	private Usuario usuario;
 
 	@ManyToOne(fetch = FetchType.EAGER)
