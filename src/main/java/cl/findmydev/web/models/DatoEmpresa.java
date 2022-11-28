@@ -14,137 +14,54 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
-@Table(name="DatosEmpresas")
+@Table(name = "DatosEmpresas")
 
 public class DatoEmpresa {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	
+
 	@NotNull
 	private String nombre;
-	
+
 	@NotNull
 	private String descripcion;
 
-		
 	private String foto;
-	 
-	 
-		@Column(updatable=false)
-		@DateTimeFormat(pattern="yyyy-MM-dd")
 
-		private Date createdAt;
-		
+	@Column(updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 
-		@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date createdAt;
 
-		private Date updatedAt;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 
+	private Date updatedAt;
 
-		
-		
-		public DatoEmpresa() {
-			super();
-		}
+	// agregar a la columna la fecha antes de insertar
+	// date para mantener registro de fechas
+	@PrePersist // antes de guardar agrega la fecha
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
 
+	// insertar en el atributo update o actualizar ese atributo ....
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
 
-
-
-		public DatoEmpresa(Long id, @NotNull String nombre, @NotNull String descripcion, @NotNull String foto) {
-			super();
-			this.id = id;
-			this.nombre = nombre;
-			this.descripcion = descripcion;
-			this.foto = foto;
-		}
-
-
-
-
-		public Long getId() {
-			return id;
-		}
-
-
-
-
-		public void setId(Long id) {
-			this.id = id;
-		}
-
-
-
-
-		public String getNombre() {
-			return nombre;
-		}
-
-
-
-
-		public void setNombre(String nombre) {
-			this.nombre = nombre;
-		}
-
-
-
-
-		public String getDescripcion() {
-			return descripcion;
-		}
-
-
-
-
-		public void setDescripcion(String descripcion) {
-			this.descripcion = descripcion;
-		}
-
-
-
-
-		public String getFoto() {
-			return foto;
-		}
-
-
-
-
-		public void setFoto(String foto) {
-			this.foto = foto;
-		}
-		
-		
-		
-		
-		//agregar a la columna la fecha antes de insertar 
-		// date para mantener registro de fechas 
-		 @PrePersist // antes de guardar agrega la fecha 
-		    protected void onCreate(){
-		        this.createdAt = new Date();
-		    }
-		 
-		 // insertar en el atributo update o actualizar ese atributo ....
-		    @PreUpdate
-		    protected void onUpdate(){
-		        this.updatedAt = new Date();
-		    }
-		    
-		    
-		    
-		    
-		    
-		    
-		
-		
-		
-		
-		
-		
-		
 }

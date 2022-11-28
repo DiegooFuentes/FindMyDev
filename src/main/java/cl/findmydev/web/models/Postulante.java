@@ -2,18 +2,18 @@ package cl.findmydev.web.models;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,20 +29,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "usuarios")
-public class Usuario {
+@Table(name = "postulantes")
+public class Postulante {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@NotNull
-	private String nombre;
-	@NotNull
-	private String apellido;
-	@NotNull
-	private String password;
-
-	private String foto;
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -61,7 +52,25 @@ public class Usuario {
 		this.updatedAt = new Date();
 	}
 
-	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Postulante postulante;
+	// @JsonIgnore
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "usuario_id") // se crea foreign key
+	private Usuario usuario;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "proyecto_id")
+	private Proyecto proyecto;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="academica_id")
+	private Academica academica;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="laboral_id")
+	private Laboral laboral;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="habilidad_blanda_id")
+	private Habilidad_Blanda habilidad_Blanda;
 
 }

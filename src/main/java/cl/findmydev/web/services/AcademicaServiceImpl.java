@@ -8,64 +8,60 @@ import org.springframework.stereotype.Service;
 import cl.findmydev.web.models.Academica;
 import cl.findmydev.web.repositories.AcademicaRepository;
 
-
 @Service
 public class AcademicaServiceImpl implements AcademicaService {
 
 	@Autowired
 	private AcademicaRepository academicaRepository;
 
-	//para guardar
+	// para guardar
 	@Override
 	public Academica guardarAcademica(Academica academica) {
 		return academicaRepository.save(academica);
-}
-	//para eliminar
+	}
+
+	// para eliminar
 	@Override
 	public String eliminarAcademica(Long id) {
 		Boolean existe = academicaRepository.existsById(id);
-		
-		if(existe) {
+
+		if (existe) {
 			academicaRepository.deleteById(id);
-		}else {
-		return "dato no existe en la tabla";
+		} else {
+			return "dato no existe en la tabla";
 		}
 		return "El usuario fue eliminado";
 	}
-		
-	
-	
-	//para actualizar
+
+	// para actualizar
 	@Override
-	public Academica actualizarAcademica (Academica academica) {
+	public Academica actualizarAcademica(Academica academica) {
 
 		Boolean existe = academicaRepository.existsById(academica.getId());
-			
-		if(existe) {
+
+		if (existe) {
 			academicaRepository.save(academica);
 			return academica;
 		}
 		return null;
 	}
-	
+
 	@Override
 	public Academica obtenerAcademica(Long id) {
-		//Optional<Usuario> user = usuarioRepository.findById(id);
+
 		Boolean existe = academicaRepository.existsById(id);
-		
-		if(existe) {
-		Academica user= academicaRepository.findById(id).get();
+
+		if (existe) {
+			Academica user = academicaRepository.findById(id).get();
 			return user;
 		}
 		return null;
 	}
-	
+
 	@Override
 	public List<Academica> obtenerListaAcademica() {
-		// obtener todos los usuarios
+
 		return academicaRepository.findAll();
 	}
 
-	}
-
-
+}
