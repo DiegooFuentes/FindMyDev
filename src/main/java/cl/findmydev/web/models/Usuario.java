@@ -63,5 +63,8 @@ public class Usuario {
 
 	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Postulante postulante;
+	
+	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Reclutador reclutador;
 
 }

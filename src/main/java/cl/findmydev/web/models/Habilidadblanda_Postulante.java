@@ -10,12 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,51 +25,52 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "Habilidades_Tecnicas")
-public class Habilidad_Tecnica {
+@Table(name="habilidadesblandas_postulantes")
+public class Habilidadblanda_Postulante {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@NotNull
-	private String nombre;
-
-	private String descripcion;
+	private Integer valoracion;
 	
-	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-			name="habilidadestec_postulantes",//nombre de la tabla relacional 
-			joinColumns = @JoinColumn(name="habilidadtec_id"),
-			inverseJoinColumns = @JoinColumn(name="postulante_id")
-			)
-	private List<Postulante> postulante;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="habilidadblanda_id")
+	private Habilidad_Blanda habilidad_blanda;
+	//2 ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="postulante_id")
+	private Postulante postulante;
 	
 	
 	
-
-	@Column(updatable = false)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date createdAt;
-
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date updatedAt;
-
+	
+	
+	
+	@Column(updatable=false)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date createdAt;
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date updatedAt;
+	
+	
 	// agregar a la columna la fecha antes de insertar
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
-
-	@PreUpdate
-	protected void onUpdate() {
-		this.updatedAt = new Date();
-	}
+		 @PrePersist
+		    protected void onCreate(){
+		        this.createdAt = new Date();
+		    }
+		 
+		 
+		    @PreUpdate
+		    protected void onUpdate(){
+		        this.updatedAt = new Date();
+		    }
 
 }

@@ -29,6 +29,12 @@ public class Reclutador {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id; 
 	
+	// @JsonIgnore
+		@OneToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "usuario_id") // se crea foreign key
+		private Usuario usuario;
+
+	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="datoEmpresa_id")
 	private DatoEmpresa datoEmpresa;

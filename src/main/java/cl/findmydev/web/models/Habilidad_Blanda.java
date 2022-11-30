@@ -9,6 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -16,6 +19,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,16 +44,23 @@ public class Habilidad_Blanda {
 	@NotNull
 	private String descripcion;
 
-	@NotNull
-	private String valoracion;
+	
+	@JsonIgnore
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name="habilidadesblandas_postulantes",//nombre de la tabla relacional 
+			joinColumns = @JoinColumn(name="habilidadblanda_id"),
+			inverseJoinColumns = @JoinColumn(name="postulante_id")
+			)
+	private List<Postulante> postulante;
+	
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
-	@OneToMany (mappedBy = "habilidad_Blanda",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	private List<Postulante> postulantes;
+	
 
 	// atributos de control
 	@PrePersist // agregar a la columna la fecha antes de insertar
