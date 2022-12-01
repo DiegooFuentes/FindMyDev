@@ -32,7 +32,7 @@ import lombok.ToString;
 @Entity // convertir en entidad
 @Table(name = "academicas")
 public class Academica {
-	@Id // primary key
+	@Id // primary key//
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	private long id;
