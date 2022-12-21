@@ -16,8 +16,15 @@ public class UsuarioApiRestController {
 	private UsuarioServiceImpl usuarioServiceImpl;
 
 	@RequestMapping("/guardar/usuario")
-	public Usuario guardarUsuario(@RequestBody Usuario usuario) {
-		return usuarioServiceImpl.guardarUsuario(usuario);
+	public String guardarUsuario(@RequestBody Usuario usuario) {
+		Boolean resultado = usuarioServiceImpl.guardarUsuario(usuario); // validar correo
+		if (resultado) { // si es verdadero
+		
+			return "Creado Correctamente"; //enviar a una vista, para retornar una vista hay que ponerle string al metod
+		}else {
+			
+			return "Error al registrar";
+		}		
 	}
 
 	@RequestMapping("/eliminar/usuario")
