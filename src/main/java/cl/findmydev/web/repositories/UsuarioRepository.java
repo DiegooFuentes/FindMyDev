@@ -8,4 +8,6 @@ import cl.findmydev.web.models.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
+	Usuario findByCorreo(String correo);
+
 }

@@ -2,6 +2,7 @@ package cl.findmydev.web.services;
 
 import java.util.Optional;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,19 @@ public class UsuarioServiceImpl implements UsuarioService {
 	private UsuarioRepository usuarioRepository;
 
 	@Override
-	public Usuario guardarUsuario(Usuario usuario) {
-		return usuarioRepository.save(usuario);
+	public Boolean guardarUsuario(Usuario usuario) {
+		
+		Usuario retornoUsuario = usuarioRepository.findByCorreo(usuario.getCorreo());
+		if(retornoUsuario==null) {
+			String passHashed = BCrypt.hashpw(usuario.getPassword(), BCrypt.gensalt());
+			
+			usuario.setPassword(passHashed);
+			usuarioRepository.save(usuario);
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 
 	@Override
@@ -55,4 +67,17 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return null;
 	}
 
+	@Override
+	public Boolean ingresoUsuario(String correo, String password) {
+		
+		Usuario usuario = usuarioRepository.findByCorreo(correo);
+		
+		if (usuario!=null) {
+			
+			return BCrypt.checkpw(password, usuario.getPassword());
+			
+		}else {
+			return false;	
+		}				
+	}
 }

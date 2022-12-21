@@ -37,14 +37,19 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
+	
 	private String nombre;
-	@NotNull
+	
 	private String apellido;
+	
+	@NotNull
+	private String correo;
+	
 	@NotNull
 	private String password;
-
-	private String foto;
+	
+	@NotNull
+	private String rol;
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
