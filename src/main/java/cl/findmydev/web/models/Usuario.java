@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -37,19 +39,15 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	
 	private String nombre;
-	
+
 	private String apellido;
-	
+
 	@NotNull
 	private String correo;
-	
+
 	@NotNull
 	private String password;
-	
-	@NotNull
-	private String rol;
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -67,12 +65,31 @@ public class Usuario {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-
+	
 	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn (name="rol_id")
+	private Rol rol;
+
 	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Postulante postulante;
-	
+
 	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Reclutador reclutador;
 
+	// Relacion ManyToMany // es lo mismo que tener dos relacions ManyToOne
+	// mappedBy significa que es el nombre de la ruta con el cual nos van a buscar y
+	// encontrar
+	 /* @ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+			// creacion de tabla relacional
+			name = "roles_usuarios", // nombre de la tabla relacional
+			joinColumns = @JoinColumn(name = "usuario_id"), // la recomendacion es que el primero sea id
+			inverseJoinColumns = @JoinColumn(name = "rol_id"))
+	private List<Rol> roles;
+
+    */
+
+
+    
 }

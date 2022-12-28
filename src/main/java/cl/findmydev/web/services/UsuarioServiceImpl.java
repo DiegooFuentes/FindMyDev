@@ -6,7 +6,9 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cl.findmydev.web.models.Postulante;
 import cl.findmydev.web.models.Usuario;
+import cl.findmydev.web.repositories.PostulanteRepository;
 import cl.findmydev.web.repositories.UsuarioRepository;
 
 @Service
@@ -14,16 +16,20 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	private PostulanteRepository postulanteRepository;
 
 	@Override
 	public Boolean guardarUsuario(Usuario usuario) {
-		
+	
+
 		Usuario retornoUsuario = usuarioRepository.findByCorreo(usuario.getCorreo());
 		if(retornoUsuario==null) {
 			String passHashed = BCrypt.hashpw(usuario.getPassword(), BCrypt.gensalt());
 			
 			usuario.setPassword(passHashed);
+			
 			usuarioRepository.save(usuario);
+			
 			return true;
 		}else {
 			return false;

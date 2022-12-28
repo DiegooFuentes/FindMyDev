@@ -28,8 +28,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -59,7 +59,7 @@ public class Postulante {
 
 	//@JsonIgnore
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "usuarioId") // se crea foreign key
+	@JoinColumn(name = "usuario_Id") // se crea foreign key
 	private Usuario usuario;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -97,6 +97,18 @@ public class Postulante {
 			inverseJoinColumns = @JoinColumn(name="habilidadblanda_id")
 			)
 	private List<Habilidad_Blanda> habilidad_blanda;
+
+	
+
+	
+	
+
+	
+
+	
+	
+	
+	
 
 
 }

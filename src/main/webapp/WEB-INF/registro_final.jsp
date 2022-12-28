@@ -42,12 +42,12 @@
 
 						<aside class="checkbox-list">
 							<!-- label -->
-							<label class="check-item"> <input value="postulante" type="radio" name="rol" />
+							<label class="check-item"> <input value="1" type="radio" name="rol" />
 								<span>Postulante</span>
 							</label>
 
 							<!-- label -->
-							<label class="check-item"> <input value="reclutador" type="radio" name="rol" />
+							<label class="check-item"> <input value="2" type="radio" name="rol" />
 								<span>Reclutador</span>
 							</label>
 						</aside>
