@@ -21,8 +21,11 @@ import cl.findmydev.web.repositories.UsuarioRepository;
 public class AccountController {
 	@Autowired
 	UsuarioServiceImpl usuarioServiceImpl;
+	@Autowired
 	PostulanteServiceImpl postulanteServiceImpl;
+	@Autowired
 	UsuarioRepository usuarioRepository;
+	@Autowired
 	PostulanteRepository postulanteRepository;
 	
 	// ////////////REGISTRO/////////////
@@ -52,6 +55,10 @@ public class AccountController {
 			Boolean resultado = usuarioServiceImpl.guardarUsuario(usuario);
 				if (resultado) {
 										
+						Postulante postulante = new Postulante();
+						postulante.setUsuario(usuario);
+						postulanteServiceImpl.guardarPostulante(postulante);
+						
 						return "login_final.jsp";
 					
 				}else {

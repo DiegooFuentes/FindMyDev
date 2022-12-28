@@ -51,9 +51,7 @@ public class Laboral {
 	@NotNull
 	private String descripcion;
 	
-	@OneToMany (mappedBy = "laboral",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	private List<Postulante> postulantes;
-
+	
 	// --------- MEtodo
 
 	@PrePersist
