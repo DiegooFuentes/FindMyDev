@@ -34,8 +34,7 @@ import lombok.ToString;
 public class Academica {
 	@Id // primary key//
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
-	private long id;
+	private Long id;
 	@NotNull
 	private String nombre;
 	private String descripcion;

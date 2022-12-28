@@ -8,14 +8,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cl.findmydev.web.services.PostulanteServiceImpl;
 import cl.findmydev.web.services.UsuarioServiceImpl;
+import cl.findmydev.web.models.Postulante;
+import cl.findmydev.web.models.Rol;
 import cl.findmydev.web.models.Usuario;
+import cl.findmydev.web.repositories.PostulanteRepository;
+import cl.findmydev.web.repositories.UsuarioRepository;
 
 @Controller
 @RequestMapping("/account")
 public class AccountController {
 	@Autowired
 	UsuarioServiceImpl usuarioServiceImpl;
+	PostulanteServiceImpl postulanteServiceImpl;
+	UsuarioRepository usuarioRepository;
+	PostulanteRepository postulanteRepository;
 	
 	// ////////////REGISTRO/////////////
 	
@@ -24,11 +32,12 @@ public class AccountController {
 		return "registro_final.jsp";
 	}
 	
+	
 	@PostMapping("/registro")
 	public String guardarFormulario(@RequestParam("correo")String correo,
 			@RequestParam("password")String password,
 			@RequestParam("password2")String password2,
-			@RequestParam("rol")String rol,
+			@RequestParam("rol")Rol rol,
 			Model model
 			){
 		if (password.equals(password2)) {
@@ -39,10 +48,12 @@ public class AccountController {
 			usuario.setPassword(password);
 			usuario.setRol(rol);
 			
-			
+
 			Boolean resultado = usuarioServiceImpl.guardarUsuario(usuario);
 				if (resultado) {
-					return "login_final.jsp";
+										
+						return "login_final.jsp";
+					
 				}else {
 					model.addAttribute("msgError" , "Correo ya registrado" );
 					return "registro_final.jsp";
