@@ -64,7 +64,5 @@ public class Proyecto {
 		this.updatedAt = new Date();
 	}
 
-	@OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Postulante> postulantes;
-
+	
 }

@@ -45,14 +45,6 @@ public class Habilidad_Blanda {
 	private String descripcion;
 
 	
-	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-			name="habilidadesblandas_postulantes",//nombre de la tabla relacional 
-			joinColumns = @JoinColumn(name="habilidadblanda_id"),
-			inverseJoinColumns = @JoinColumn(name="postulante_id")
-			)
-	private List<Postulante> postulante;
 	
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

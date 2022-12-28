@@ -44,14 +44,7 @@ public class Habilidad_Tecnica {
 
 	private String descripcion;
 	
-	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-			name="habilidadestec_postulantes",//nombre de la tabla relacional 
-			joinColumns = @JoinColumn(name="habilidadtec_id"),
-			inverseJoinColumns = @JoinColumn(name="postulante_id")
-			)
-	private List<Postulante> postulante;
+
 	
 	
 	

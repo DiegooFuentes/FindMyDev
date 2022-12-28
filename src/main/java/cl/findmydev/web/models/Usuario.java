@@ -70,25 +70,13 @@ public class Usuario {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn (name="rol_id")
 	private Rol rol;
-
-	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	
+	@JsonIgnore 
+	@OneToOne(mappedBy = "usuario",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private Postulante postulante;
 
-	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Reclutador reclutador;
+	
 
-	// Relacion ManyToMany // es lo mismo que tener dos relacions ManyToOne
-	// mappedBy significa que es el nombre de la ruta con el cual nos van a buscar y
-	// encontrar
-	 /* @ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(
-			// creacion de tabla relacional
-			name = "roles_usuarios", // nombre de la tabla relacional
-			joinColumns = @JoinColumn(name = "usuario_id"), // la recomendacion es que el primero sea id
-			inverseJoinColumns = @JoinColumn(name = "rol_id"))
-	private List<Rol> roles;
-
-    */
 
 
     
