@@ -14,7 +14,7 @@
 
 body{
     background-color: rgb(208, 242, 250);
-    background-image: url(/img/recluter2.png);
+    background-image: url(/assets/img/recluter2.png);
     height: 100vh;
     width: 100%;
     backdrop-filter: blur(10px);

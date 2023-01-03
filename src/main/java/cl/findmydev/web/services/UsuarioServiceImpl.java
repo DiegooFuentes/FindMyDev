@@ -86,4 +86,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 			return false;	
 		}				
 	}
+	
+	@Override
+	public Usuario obtenerUsuarioCorreo(String correo) {
+		
+		return usuarioRepository.findByCorreo(correo);
+	}
 }

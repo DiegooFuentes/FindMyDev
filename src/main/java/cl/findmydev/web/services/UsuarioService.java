@@ -13,4 +13,6 @@ public interface UsuarioService {
 	public Usuario obtenerUsuario(Long id);
 	
 	public Boolean ingresoUsuario(String correo, String password);
+	
+	public Usuario obtenerUsuarioCorreo(String correo);
 }

@@ -1,8 +1,10 @@
 package cl.findmydev.web.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import cl.findmydev.web.models.Postulante;
@@ -54,5 +56,15 @@ public class PostulanteServiceImpl implements PostulanteService {
 		}
 		return null;
 	}
+	
+	public List<Postulante> listaPostulantes(){
+		return postulanteRepository.findAll();
+	}
+	
+	
+	//@Override
+	//public List<Postulante> buscarPorHabilidadBlanda(Long id){
+	//	return postulanteRepository.buscarPorHabilidadBlanda(id);
+	//}
 
 }
