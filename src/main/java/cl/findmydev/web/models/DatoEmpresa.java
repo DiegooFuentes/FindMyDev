@@ -17,6 +17,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +31,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "datoEmpresas")
+@Table(name = "datos_Empresas")
 
 public class DatoEmpresa {
 
@@ -44,45 +46,28 @@ public class DatoEmpresa {
 	private String descripcion;
 
 	private String foto;
-	 
-	 
-		@Column(updatable=false)
-		@DateTimeFormat(pattern="yyyy-MM-dd")
 
-		private Date createdAt;
-		
+	@Column(updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 
-		@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date createdAt;
 
-		private Date updatedAt;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 
+	private Date updatedAt;
 
-		
-		
-		//agregar a la columna la fecha antes de insertar 
-		// date para mantener registro de fechas 
-		 @PrePersist // antes de guardar agrega la fecha 
-		    protected void onCreate(){
-		        this.createdAt = new Date();
-		    }
-		 
-		 // insertar en el atributo update o actualizar ese atributo ....
-		    @PreUpdate
-		    protected void onUpdate(){
-		        this.updatedAt = new Date();
-		    }
+	@PrePersist 
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
 
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
+	
+	@JsonIgnore
+	@OneToOne(mappedBy = "datoEmpresa",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private Reclutador reclutador;
 
-
-
-		    
-		    
-		    
-		
-		
-		
-		
-		
-		
-		
 }

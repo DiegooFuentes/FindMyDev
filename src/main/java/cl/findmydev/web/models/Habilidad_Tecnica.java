@@ -2,15 +2,12 @@ package cl.findmydev.web.models;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -43,11 +40,6 @@ public class Habilidad_Tecnica {
 	private String nombre;
 
 	private String descripcion;
-	
-
-	
-	
-	
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -67,4 +59,7 @@ public class Habilidad_Tecnica {
 		this.updatedAt = new Date();
 	}
 
+	@JsonIgnore
+	@ManyToMany(mappedBy="habilidad_tecnica",fetch= FetchType.LAZY)
+	private List<Postulante> postulante;
 }

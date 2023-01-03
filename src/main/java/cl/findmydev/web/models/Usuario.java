@@ -75,6 +75,9 @@ public class Usuario {
 	@OneToOne(mappedBy = "usuario",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private Postulante postulante;
 
+	@JsonIgnore 
+	@OneToOne(mappedBy = "usuario",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private Reclutador reclutador;
 	
 
 

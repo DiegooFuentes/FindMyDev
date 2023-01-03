@@ -2,17 +2,13 @@ package cl.findmydev.web.models;
 
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -42,27 +38,29 @@ public class Habilidad_Blanda {
 	private long id;
 
 	@NotNull
+	private String nombre;
+	
+	@NotNull
 	private String descripcion;
 
-	
-	
-
+	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 	
-	
-
-	// atributos de control
-	@PrePersist // agregar a la columna la fecha antes de insertar
+	@PrePersist 
 	protected void onCreate() {
 		this.createdAt = new Date();
 	}
 
-	@PreUpdate // actualizar el atributo de created
+	@PreUpdate 
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
 
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy="habilidad_blanda",fetch= FetchType.LAZY)
+	private List<Postulante> postulante;
 }

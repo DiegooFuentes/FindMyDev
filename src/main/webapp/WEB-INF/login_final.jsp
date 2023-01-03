@@ -15,7 +15,7 @@
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
 <!--ruta estilo css-->
-<link rel="stylesheet" type="text/css" href="/css/styleLogin.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/styleLogin.css">
 <title>Login</title>
 </head>
 
@@ -25,7 +25,7 @@
 			
 			<div class="col uno">
 				<div class="form">
-					<img src="/img/logo-removebg-preview.png" alt="" width=270px>
+					<img src="/assets/img/logo-removebg-preview.png" alt="" width=270px>
 					<c:if test="${msgError!=null}">
 				<div class="alert alert-danger" role="alert">
 					<c:out value="${msgError}"></c:out>
@@ -52,7 +52,7 @@
 
 			<div class="col dos">
 				<div class="form2">
-					<img src="/img/color1.png" alt="" width=300px">
+					<img src="/assets/img/color1.png" alt="" width=300px">
 				</div>
 
 			</div>

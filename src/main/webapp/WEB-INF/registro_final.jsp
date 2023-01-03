@@ -15,7 +15,7 @@
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
 <!--ruta estilo css-->
-<link rel="stylesheet" type="text/css" href="/css/styleRegistro.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/styleRegistro.css">
 <title>Registro</title>
 </head>
 
@@ -26,7 +26,7 @@
 			<div class="col uno">
 			
 				<div class="form">
-					<img src="/img/logo-removebg-preview.png" alt="" width=100px>
+					<img src="/assets/img/logo-removebg-preview.png" alt="" width=100px>
 
 					<form action="/account/registro" method="post">
 						<input type="email" id="correo" name="correo" placeholder="Email"
@@ -72,7 +72,7 @@
 					<c:out value="${msgError}"></c:out>
 				</div>
 			</c:if>
-					<img src="/img/color1.png" alt="" width=300px>
+					<img src="/assets/img/color1.png" alt="" width=300px>
 
 				</div>
 
