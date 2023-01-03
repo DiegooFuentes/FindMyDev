@@ -60,7 +60,7 @@ public class Habilidad_BlandaServiceImpl implements Habilidad_BlandaService {
 
 	@Override
 	public List<Habilidad_Blanda> obtenerListaHabilidad_Blanda() {
-
+       System.out.println("habilidad_BlandaRepository.findAll();");
 		return habilidad_BlandaRepository.findAll();
 	}
 

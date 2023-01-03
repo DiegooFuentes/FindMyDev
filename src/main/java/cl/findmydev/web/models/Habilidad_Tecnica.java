@@ -66,5 +66,17 @@ public class Habilidad_Tecnica {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
+	
+	//**********Relaciones
+	//ManyToMany
+		@JsonIgnore
+		@ManyToMany(fetch = FetchType.LAZY)
+		@JoinTable(
+				name="habilidadTecnica_postulante",//nombre de la tabla relacional 
+				joinColumns = @JoinColumn(name="habilidadTecnica_id"),
+				inverseJoinColumns = @JoinColumn(name="postulante_id")
+				)
+		private List<Postulante> postulante;
+
 
 }

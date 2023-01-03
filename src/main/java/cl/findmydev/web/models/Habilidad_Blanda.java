@@ -3,7 +3,6 @@ package cl.findmydev.web.models;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -21,6 +19,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,10 +40,11 @@ public class Habilidad_Blanda {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@NotNull
+	
 	private String descripcion;
 
-	
+	@NotNull
+	private String nombre;
 	
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -64,5 +64,20 @@ public class Habilidad_Blanda {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
+	
+	//*****************Relaciones********** 
+	//Relacion con postulante muchos es a muchos una habilidad puede tener mas 
+	// de un Postulante & un postulante mas de una habilidad 
+	// 
+	//ManyToMany
+	@JsonIgnore
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name="habilidadBlanda_postulante",//nombre de la tabla relacional 
+			joinColumns = @JoinColumn(name="habilidadBlanda_id"),
+			inverseJoinColumns = @JoinColumn(name="postulante_id")
+			)
+	private List<Postulante> postulante;
+
 
 }
