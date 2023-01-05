@@ -8,8 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -19,7 +17,6 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -69,15 +66,8 @@ public class Habilidad_Blanda {
 	//Relacion con postulante muchos es a muchos una habilidad puede tener mas 
 	// de un Postulante & un postulante mas de una habilidad 
 	// 
-	//ManyToMany
 	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-			name="habilidadBlanda_postulante",//nombre de la tabla relacional 
-			joinColumns = @JoinColumn(name="habilidadBlanda_id"),
-			inverseJoinColumns = @JoinColumn(name="postulante_id")
-			)
+	@ManyToMany(mappedBy="habilidad_blanda",fetch= FetchType.LAZY)
 	private List<Postulante> postulante;
-
 
 }

@@ -3,6 +3,7 @@ package cl.findmydev.web.models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,14 +13,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -56,35 +56,44 @@ public class Postulante {
 		this.updatedAt = new Date();
 	}
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="usuario_id") 
-	private Usuario usuario;
+
 	
     //*****RELACIONES ******
 	
-	//ManyToMany
-	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="usuario_id", referencedColumnName = "id") 
+	private Usuario usuario;
+	
+	
+	@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "dato_contacto_id", referencedColumnName = "id")
+    private DatoContacto datoContacto;
+
+	@OneToMany(mappedBy= "postulante",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private List<Academica> academica;
+	
+	@OneToMany(mappedBy = "postulante",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private List<Laboral> laboral;
+	
+	@OneToMany(mappedBy="postulante",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private List<Proyecto> proyecto;
+	
+	@ManyToMany
 	@JoinTable(
-			name="habilidadBlanda_postulante",//nombre de la tabla relacional 
+			name="hblandas_usuarios",
 			joinColumns = @JoinColumn(name="postulante_id"),
-			inverseJoinColumns = @JoinColumn(name="habilidadBlanda_id")
+			inverseJoinColumns = @JoinColumn(name="habilidad_blanda_id")	
 			)
 	private List<Habilidad_Blanda> habilidad_blanda;
 	
 	
-
-	//ManyToMany
-		@JsonIgnore
-		@ManyToMany(fetch = FetchType.LAZY)
-		@JoinTable(
-				name="habilidadTecnica_postulante",//nombre de la tabla relacional 
-				joinColumns = @JoinColumn(name="postulante_id"),
-				inverseJoinColumns = @JoinColumn(name="habilidadTecnica_id")
-				)
-		private List<Habilidad_Tecnica> habilidad_tecnica;
-
-	
+	@ManyToMany
+	@JoinTable(
+			name="htecnicas_usuarios",
+			joinColumns= @JoinColumn(name="postulante_id"),
+			inverseJoinColumns= @JoinColumn(name="habilidad_tecnica_id")
+			)
+	private List<Habilidad_Tecnica> habilidad_tecnica;
 	
 	
 	

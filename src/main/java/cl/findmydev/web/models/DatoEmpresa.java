@@ -17,6 +17,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +31,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "datoEmpresas")
+@Table(name = "datos_Empresas")
 
 public class DatoEmpresa {
 
@@ -77,7 +79,9 @@ public class DatoEmpresa {
 
 		    
 		    
-		    
+		    @JsonIgnore
+			@OneToOne(mappedBy = "datoEmpresa",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+			private Reclutador reclutador;
 		
 		
 		

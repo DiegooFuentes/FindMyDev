@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +26,7 @@
     <link rel="stylesheet" href="/css/home.css" />
     <link rel="stylesheet" href="/css/modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"">
+    <link rel="stylesheet" href="/css/misDatos.css">
 
 
     <link
@@ -40,9 +40,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
         id="bootstrap-css" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-    <!--MyStyle misdatosgeneral-->
-    <link rel="stylesheet" href="/css/misDatos.css">
-    <title>mis datos laboral</title>
+
+    <title>Document</title>
 </head>
 
 <body body id="body-pd">
@@ -110,6 +109,8 @@
                     sesión</span> </a>
         </nav>
     </div>
+    <!--Container Main start-->
+
 
 
 
@@ -127,7 +128,7 @@
 
             <div class="d-flex menu_lista">
 
-                <div class="lista-item"> <a href="./habilidadesBlandas.html"><button type="button" class="btn btn_menu "
+                <div class="lista-item"> <a href="./habilidadesBlandas.html"><button type="button" class="btn btn_menu"
                             data-bs-dismiss="modal">Habilidades
                             Blandas</button> </a></div>
                 <div class="lista-item"> <a href="./habilidadestTecnicas.html"><button type="button"
@@ -164,90 +165,83 @@
                     <div class="col-md-12 info_perfil">
                         <h2> Maria Luz</h2>
                         <p>maria@gmail.com</p>
-                        <button type="button" class="btn btn_form  animate__animated animate__pulse animate__repeat-3"
+
+
+
+
+
+
+
+
+
+                        <!-- Button trigger modal -->
+                        <button type="button"
+                            class="btn btn_form text-center   animate__animated animate__pulse animate__repeat-3	3"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Agregar experiencia laboral
+                            Agregar Habilidades Blandas
                         </button>
 
-                        <form action="/miPerfil/datoslaborales" method="post">
 
 
 
+
+                        <form action="/miPerfil/habilidadesBlandas" method="post">
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                     <div class="modal-content">
+
                                         <div class="modal-body form_body">
-                                            <h1 class="modal-title fs-5 text-center" id="exampleModalLabel"> Experiencia
-                                                Laboral</h1>
+                                            <h1 class="modal-title fs-5 font_Color text-center" id="exampleModalLabel">
+                                                Seleccione sus habilidades blandas</h1>
+
                                         </div>
 
                                         <div class="modal-body">
-                                            <div class="main active">
-                                                <div class="heading">
-                                                    <div class="input-text">
 
-                                                    </div>
-                                                    <div class="academica">
-                                                        <div class="input-text">
 
-                                                        </div>
-                                                    </div>
+                                        </div>
+                                        <div class="modal-body">
 
-                                                    <div class="row justify-content">
-                                                        <div class="input-text">
-                                                            <label for="nombre">Cargo</label>
-                                                            <input type="text" placeholder="" require="required"
-                                                                id="Nombre" name="nombre">
-                                                        </div>
-                                                        <div class="input-text">
-                                                            <label for="descripcion">Descripción</label>
-                                                            <input type="text" placeholder="Descripción"
-                                                                require="required" id="descripcion" name="descripcion">
-                                                        </div>
-                                                        <div class="input-text">
-                                                            <label for="fecha">Fecha de Inicio </label>
-                                                            <input type="date" placeholder="Fecha de inicio - Término"
-                                                                require="required" id="Fecha de inicio - Término">
 
-                                                        </div>
-                                                        <div class="input-text">
-                                                            <label for="fecha">Fecha de Termino</label>
-                                                            <input type="date" placeholder="Fecha de inicio - Término"
-                                                                require="required" id="Fecha de inicio - Término">
+                                            <label for="nombre">
+                                                <input type="checkbox" id="cbox1" value="1" name="nombre">
+                                                Responsabilidad</label>
+                                            <br>
 
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <label>
+                                                <input type="checkbox" id="cbox1" value="2">
+                                                Comunicación</label>
+                                            <br>
+                                            <label>
+                                                <input type="checkbox" id="cbox1" value="3">
+                                                Orientación al detalle</label>
+                                            <br>
+                                            <label>
+                                                <input type="checkbox" id="cbox1" value="4">
+                                                Trabajo en equipo</label>
+                                            <br>
+                                            <label>
+                                                <input type="checkbox" id="cbox1" value="5">
+                                                Gestión de tiempo</label>
+                                            <br>
 
-                                            </div>
+
+
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn_cerrar"
                                                     data-bs-dismiss="modal">Cerrar</button>
-                                                <button type="submit" class="btn btn_submit">Guardar
-                                                    Cambios</button>
+                                                <button type=" submit" class="btn ">agregar habilidades</button>
                                             </div>
                         </form>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
+
+
+
+
+
 
 
 
@@ -255,46 +249,113 @@
         </div>
 
 
+
+
     </div>
 
+
     </div>
 
 
- <!--INICIO SECCION DE MOSTRAR DATOS-->
 
- <!--INICIO SECCION DE MOSTRAR DATOS-->
+    </div>
 
 
- <div class="row justify-content-center container-tarjetas-db">
-   <c:forEach var="laboral" items="${listaLaboral}">
-    <div class="col-md-4">
-        <div class="container-fluid menu-carta">
-            <div class="row menu-form-inscritos">
-              <div class="col-md-10 mx-auto contenedor-lab">
-                <!--Inicio tarjeta-->
-                <div class="card tarjeta-laboral mx-auto">
-                    <h4 class="card-header tarLab-header">Experiencia Laboral</h4>
-                    <div class="card-body text-center">
-                      <h4 class="card-title tarLab-titulo "><c:out value="${laboral.nombre}"></c:out></h4>
-                      <p class="card-text tarLab-text">${laboral.descripcion}</p>
-                      <p class="card-text tarLab-text">Fecha Inicio:2/03/2019</p>
-                      <p class="card-text tarLab-text">Fecha Termino:5/08/2022</p>
-                    </div>
-                    <div class="d-grid gap-2 d-md-flex justify-content-center">
-                        <button class="btn btn-primary me-md-2 btn-lab text-center" type="button">Editar</button>
-                        <button class="btn btn-primary  me-md-2 btn-lab btn_cerrar " type="button">Eliminar</button>
+
+
+
+    <div class="row">
+
+        <div class="col-md-12">
+    
+            <div class="container-fluid menu-carta">
+                <div class="row menu-form-inscritos">
+                  <div class="col-md-10 mx-auto contenedor-lab">
+                    <!--Inicio tarjeta-->
+                    <div class="card ">
+                        <h4 class="card-header tarLab-header">Habilidades Blandas</h4>
+                        <div class="card-body text-center">
+                          <ul>
+
+                          
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                              </svg> Trabajo en Equipo</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                              </svg>Comunicación</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                              </svg>Gestión al detalle</li>
+                            
+
+                          </ul>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <button class="btn btn-primary me-md-2 btn-lab text-center" type="button">Editar</button>
+                            <button class="btn btn-primary  me-md-2 btn-lab btn_cerrar " type="button">Eliminar</button>
+                          </div>
                       </div>
+                    <!--Fin tarjeta-->
                   </div>
-                <!--Fin tarjeta-->
+                </div>
               </div>
-            </div>
-          </div>
-        
+            
+    
+    
+    
+    
+    
+        </div>
+       
+            
+    
+    
+    
+        </div>
+       
+            
+    
+    
+    
+    
+    
+    
+        </div>
+        <div>
+    
+    
+    
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ 
+
+
+        <!--cierre container fluid-->
     </div>
-    </c:forEach>
-   
-   <!--CIERRE MOSTRAR DATOS-->
-    <!--main contenerdor tarjetas final-->
+
+
+
+
+
+
+
+
+
+
+
+    <!--main final-->
     </div>
     <!--cierre de contenedor grande-->
     </div>
@@ -310,7 +371,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script src="/assets/js/modal.js"></script>
+    <script src="../assets/js/modal.js"></script>
 
     <!-- scrip modal -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -323,4 +384,4 @@
     </div>
 </body>
 
-</html></html>
+</html>
