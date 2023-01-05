@@ -135,7 +135,7 @@
 
                         <div class="d-flex menu_lista">
 
-                            <div class="lista-item"> <a href="./RegistrosPostulante/habilidadesBlandas.html"><button
+                            <div class="lista-item"> <a href="/miPerfil/habilidadesBlandas"><button
                                         type="button" class="btn btn_menu" data-bs-dismiss="modal">Habilidades
                                         Blandas</button> </a></div>
                             <div class="lista-item"> <a href="./RegistrosPostulante/habilidadestTecnicas.html"><button

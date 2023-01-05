@@ -66,6 +66,7 @@ public class Usuario {
 		this.updatedAt = new Date();
 	}
 	
+
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn (name="rol_id")
@@ -74,6 +75,10 @@ public class Usuario {
 	@JsonIgnore 
 	@OneToOne(mappedBy = "usuario",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private Postulante postulante;
+
+	@JsonIgnore 
+	@OneToOne(mappedBy = "usuario",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private Reclutador reclutador;
 
 	
 
